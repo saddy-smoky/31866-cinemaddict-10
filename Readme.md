@@ -1,7 +1,7 @@
 # Личный проект «Киноман» [![Build status][travis-image]][travis-url]
 
 * Студент: [Александр Ливитчук](https://up.htmlacademy.ru/ecmascript/10/user/31866).
-* Наставник: `Неизвестно`.
+* Наставник: `Владимир Чебаков`.
 
 ---
 
