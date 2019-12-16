@@ -1,4 +1,6 @@
-export const createNavigation = (cards) => {
+import {createElement} from "../util";
+
+const createNavigation = (cards) => {
 
   let watchListCount = 0;
   let historyCount = 0;
@@ -23,3 +25,26 @@ export const createNavigation = (cards) => {
     <a href="#stats" class="main-navigation__item main-navigation__item--additional">Stats</a>
   </nav>`;
 };
+
+export default class Navigation {
+  constructor(cards) {
+    this._element = null;
+    this._cards = cards;
+  }
+
+  getTemplate() {
+    return createNavigation(this._cards);
+  }
+
+  getElement() {
+    if (!this._element) {
+      this._element = createElement(this.getTemplate());
+    }
+
+    return this._element;
+  }
+
+  removeElement() {
+    this._element = null;
+  }
+}
