@@ -7,7 +7,6 @@ import FilmCard from "./components/card";
 import LoadMoreButton from "./components/more-btn";
 import SortContainer from "./components/sort";
 import FilmDetails from "./components/film-details";
-import {generateFilmDetails} from "./mock/film-details";
 
 const CARD_COUNT = 15;
 const SHOWING_CARDS_COUNT_ON_START = 5;
@@ -15,7 +14,7 @@ const SHOWING_CARDS_COUNT_BY_BUTTON = 5;
 
 const renderFilm = (film, container) => {
   const filmComponent = new FilmCard(film);
-  const filmDetailsComponent = new FilmDetails(generateFilmDetails());
+  const filmDetailsComponent = new FilmDetails(film);
   const clickableFilmElements = [];
 
   clickableFilmElements.push(filmComponent.getElement().querySelector(`.film-card__title`));
@@ -56,29 +55,27 @@ const extraFilmsList = filmsListComponent.getElement().querySelectorAll(`.films-
 const topRatedContainer = extraFilmsList[0].querySelector(`.films-list__container`);
 const mostCommentedContainer = extraFilmsList[1].querySelector(`.films-list__container`);
 
-const sortedFilmsByComments = cards.sort((a, b) => {
+const sortedFilmsByComments = cards.slice(0, cards.length - 1).sort((a, b) => {
   if (a.commentsVal > b.commentsVal) {
-    return 1;
+    return -1;
   }
   if (a.commentsVal === b.commentsVal) {
     return 0;
   }
   if (a.commentsVal < b.commentsVal) {
-    return -1;
+    return 1;
   }
 });
 
-
-// const twoFilmsByComments = sortedFilmsByComments.slice(0, 1);
-const sortedFilmsByRating = cards.sort((a, b) => {
+const sortedFilmsByRating = cards.slice(0, cards.length - 1).sort((a, b) => {
   if (parseFloat(a.rating) > parseFloat(b.rating)) {
-    return 1;
+    return -1;
   }
   if (parseFloat(a.rating) === parseFloat(b.rating)) {
     return 0;
   }
   if (parseFloat(a.rating) < parseFloat(b.rating)) {
-    return -1;
+    return 1;
   }
 });
 

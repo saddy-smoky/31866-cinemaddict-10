@@ -29,14 +29,14 @@ export const getRandomArrayItem = (array) => {
   return array[randIndex];
 };
 
-export const getRandomRate = () => (Math.random() * 1000 / 100).toFixed(2);
+export const getRandomRate = () => Math.random() * 1000 / 100;
 
 export const getRandomDuration = () => `${getRandomInt(0, 2)}h ${getRandomInt(0, 59)}m`;
 
 export const getCommentsVal = () => {
   const val = getRandomInt(0, 100);
 
-  return `${val} comments`;
+  return val;
 };
 
 export const getDescription = () => {
