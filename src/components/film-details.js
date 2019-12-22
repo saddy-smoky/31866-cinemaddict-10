@@ -30,12 +30,12 @@ const createPopup = (filmDetails) => {
           <div class="film-details__info-head">
             <div class="film-details__title-wrap">
               <h3 class="film-details__title">${filmName}</h3>
-              <p class="film-details__title-original">Original: ${originalFilmName}</p>
+              <p class="film-details__title-original">Original: ${filmName}</p>
             </div>
 
             <div class="film-details__rating">
-              <p class="film-details__total-rating">${rating}</p>
-              <p class="film-details__user-rating">Your rate ${userRating}</p>
+              <p class="film-details__total-rating">${rating.toFixed(2)}</p>
+              <p class="film-details__user-rating">Your rate ${rating.toFixed(2)}</p>
             </div>
           </div>
 
