@@ -1,4 +1,6 @@
-export const createPopup = (filmDetails) => {
+import {createElement} from "../util";
+
+const createPopup = (filmDetails) => {
   const {
     filmName, rating, userRating, date, duration, genres, posterPath, description, director, writers, actors, country, minAge, originalFilmName
   } = filmDetails;
@@ -19,7 +21,7 @@ export const createPopup = (filmDetails) => {
       </div>
       <div class="film-details__info-wrap">
         <div class="film-details__poster">
-          <img class="film-details__poster-img" src="./images/posters/the-great-flamarion.jpg" alt="">
+          <img class="film-details__poster-img" src="${posterPath}" alt="">
 
           <p class="film-details__age">${minAge}</p>
         </div>
@@ -231,3 +233,26 @@ export const createPopup = (filmDetails) => {
 </section>`;
 
 };
+
+export default class FilmDetails {
+  constructor(info) {
+    this._element = null;
+    this._info = info;
+  }
+
+  getTemplate() {
+    return createPopup(this._info);
+  }
+
+  getElement() {
+    if (!this._element) {
+      this._element = createElement(this.getTemplate());
+    }
+
+    return this._element;
+  }
+
+  removeElement() {
+    this._element = null;
+  }
+}

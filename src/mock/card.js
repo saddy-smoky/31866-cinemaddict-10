@@ -5,15 +5,33 @@ import {
   getRandomArrayItem,
   getRandomDuration,
   getRandomRate,
+  getFullDate,
   getRandomYear
 } from "../util";
 
+const actors = [`Erich von Stroheim`, `Mary Beth Hughes`, `Dan Duryea`];
+const director = `Anthony Mann`;
+const writers = [`Anne Wigton`, `Heinz Herald`, `Richard Weil`];
+const country = `USA`;
+const minAge = `18+`;
 
 const generateCard = () => {
+  const genres = [];
+
+  for (let i = 0; i < 3; i++) {
+    genres.push(getRandomArrayItem(filmTypes));
+  }
   return {
+    minAge,
+    director,
+    writers,
+    actors,
+    country,
+    genres,
     filmName: getRandomArrayItem(filmNames),
     rating: getRandomRate(),
     year: getRandomYear(),
+    date: getFullDate(),
     duration: getRandomDuration(),
     type: getRandomArrayItem(filmTypes),
     posterPath: postersPath + getRandomArrayItem(posterNames),

@@ -1,5 +1,10 @@
 import {descriptionSource, monthNames} from "./const";
 
+export const RenderPosition = {
+  AFTERBEGIN: `afterbegin`,
+  BEFOREEND: `beforeend`,
+};
+
 export const getRandomInt = (min, max) => min + Math.floor(max * Math.random());
 
 export const getRandomYear = () => {
@@ -24,14 +29,14 @@ export const getRandomArrayItem = (array) => {
   return array[randIndex];
 };
 
-export const getRandomRate = () => (Math.random() * 1000 / 100).toFixed(2);
+export const getRandomRate = () => Math.random() * 1000 / 100;
 
 export const getRandomDuration = () => `${getRandomInt(0, 2)}h ${getRandomInt(0, 59)}m`;
 
 export const getCommentsVal = () => {
   const val = getRandomInt(0, 100);
 
-  return `${val} comments`;
+  return val;
 };
 
 export const getDescription = () => {
@@ -40,4 +45,22 @@ export const getDescription = () => {
     arr.push(getRandomArrayItem(descriptionSource));
   }
   return arr.join(` `);
+};
+
+export const createElement = (template) => {
+  const newElement = document.createElement(`div`);
+  newElement.innerHTML = template;
+
+  return newElement.firstChild;
+};
+
+export const render = (container, element, place) => {
+  switch (place) {
+    case RenderPosition.AFTERBEGIN:
+      container.prepend(element);
+      break;
+    case RenderPosition.BEFOREEND:
+      container.append(element);
+      break;
+  }
 };
