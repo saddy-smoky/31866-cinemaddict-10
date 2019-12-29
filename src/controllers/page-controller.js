@@ -4,6 +4,7 @@ import {remove, render, RenderPosition} from "../utils/render";
 import LoadMoreButton from "../components/more-btn";
 import NoFilms from "../components/no-films";
 import MainContainer from "../components/main-container";
+import SortComponent, {SortType} from "../components/sort";
 
 const SHOWING_CARDS_COUNT_ON_START = 5;
 const SHOWING_CARDS_COUNT_BY_BUTTON = 5;
@@ -46,6 +47,7 @@ export default class PageController {
     this._noFilmsComponent = new NoFilms();
     this._filmsListComponent = new MainContainer();
     this._loadMoreButtonComponent = new LoadMoreButton();
+    this._sortComponent = new SortComponent();
   }
 
   render(cards) {
@@ -106,6 +108,7 @@ export default class PageController {
       return;
     }
 
+    render(this._container, this._sortComponent, RenderPosition.BEFOREEND);
     render(this._container, this._filmsListComponent, RenderPosition.BEFOREEND);
 
     renderFilms(cards.slice(0, showingCardsCount), filmsListContainer);
@@ -113,5 +116,30 @@ export default class PageController {
     renderFilms(sortedFilmsByComments.slice(0, 2), mostCommentedContainer);
 
     renderLoadMoreButton();
+
+    this._sortComponent.setSortTypeChangeHandler((sortType) => {
+      let sortedCards = [];
+
+      switch (sortType) {
+        case SortType.BY_RATING:
+          sortedCards = cards.slice().sort((a, b) => b.rating - a.rating);
+          break;
+        case SortType.BY_DATE:
+          sortedCards = cards.slice().sort((a, b) => b.year - a.year);
+          break;
+        case SortType.DEFAULT:
+          sortedCards = cards.slice(0, showingCardsCount);
+          break;
+      }
+
+      filmsListContainer.innerHTML = ``;
+      renderFilms(sortedCards, filmsListContainer);
+
+      if (sortType === SortType.DEFAULT) {
+        renderLoadMoreButton();
+      } else {
+        remove(this._loadMoreButtonComponent);
+      }
+    });
   }
 }
