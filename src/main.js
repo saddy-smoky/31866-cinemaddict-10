@@ -17,8 +17,8 @@ const mainBlock = document.querySelector(`.main`);
 
 // const cards = [];
 
-const sortContainer = new SortContainer();
-render(mainBlock, sortContainer, RenderPosition.BEFOREEND);
+/* const sortContainer = new SortContainer();
+render(mainBlock, sortContainer, RenderPosition.BEFOREEND);*/
 
 const cards = generateCards(CARD_COUNT);
 
