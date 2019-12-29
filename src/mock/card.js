@@ -7,7 +7,7 @@ import {
   getRandomRate,
   getFullDate,
   getRandomYear
-} from "../util";
+} from "../utils/common";
 
 const actors = [`Erich von Stroheim`, `Mary Beth Hughes`, `Dan Duryea`];
 const director = `Anthony Mann`;

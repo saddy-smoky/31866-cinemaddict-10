@@ -1,8 +1,8 @@
-import {createElement} from "../util";
+import AbstractComponent from "./abstract-component";
 
 const createPopup = (filmDetails) => {
   const {
-    filmName, rating, userRating, date, duration, genres, posterPath, description, director, writers, actors, country, minAge, originalFilmName
+    filmName, rating, date, duration, genres, posterPath, description, director, writers, actors, country, minAge
   } = filmDetails;
 
   const createGenres = () => {
@@ -234,9 +234,9 @@ const createPopup = (filmDetails) => {
 
 };
 
-export default class FilmDetails {
+export default class FilmDetails extends AbstractComponent {
   constructor(info) {
-    this._element = null;
+    super();
     this._info = info;
   }
 
@@ -244,15 +244,7 @@ export default class FilmDetails {
     return createPopup(this._info);
   }
 
-  getElement() {
-    if (!this._element) {
-      this._element = createElement(this.getTemplate());
-    }
-
-    return this._element;
-  }
-
-  removeElement() {
-    this._element = null;
+  setCloseClickHandler(handler) {
+    this.getElement().querySelector(`.film-details__close-btn`).addEventListener(`click`, handler);
   }
 }
