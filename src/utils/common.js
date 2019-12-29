@@ -1,9 +1,4 @@
-import {descriptionSource, monthNames} from "./const";
-
-export const RenderPosition = {
-  AFTERBEGIN: `afterbegin`,
-  BEFOREEND: `beforeend`,
-};
+import {descriptionSource, monthNames} from "../const";
 
 export const getRandomInt = (min, max) => min + Math.floor(max * Math.random());
 
@@ -47,20 +42,4 @@ export const getDescription = () => {
   return arr.join(` `);
 };
 
-export const createElement = (template) => {
-  const newElement = document.createElement(`div`);
-  newElement.innerHTML = template;
 
-  return newElement.firstChild;
-};
-
-export const render = (container, element, place) => {
-  switch (place) {
-    case RenderPosition.AFTERBEGIN:
-      container.prepend(element);
-      break;
-    case RenderPosition.BEFOREEND:
-      container.append(element);
-      break;
-  }
-};

@@ -1,4 +1,4 @@
-import {createElement} from "../util";
+import AbstractComponent from "./abstract-component";
 
 const createProfile = (filmsCount) => {
   let rating = ``;
@@ -17,25 +17,13 @@ const createProfile = (filmsCount) => {
   </section>`;
 };
 
-export default class Profile {
+export default class Profile extends AbstractComponent {
   constructor(filmsCount) {
-    this._element = null;
+    super();
     this._filmsCount = filmsCount;
   }
 
   getTemplate() {
     return createProfile(this._filmsCount);
-  }
-
-  getElement() {
-    if (!this._element) {
-      this._element = createElement(this.getTemplate());
-    }
-
-    return this._element;
-  }
-
-  removeElement() {
-    this._element = null;
   }
 }

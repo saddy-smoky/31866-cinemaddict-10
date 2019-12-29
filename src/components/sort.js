@@ -1,4 +1,4 @@
-import {createElement} from "../util";
+import AbstractComponent from "./abstract-component";
 
 const createSortContainer = () => `<ul class="sort">
     <li><a href="#" class="sort__button sort__button--active">Sort by default</a></li>
@@ -6,24 +6,8 @@ const createSortContainer = () => `<ul class="sort">
     <li><a href="#" class="sort__button">Sort by rating</a></li>
   </ul>`;
 
-export default class SortContainer {
-  constructor() {
-    this._element = null;
-  }
-
+export default class SortContainer extends AbstractComponent {
   getTemplate() {
     return createSortContainer();
-  }
-
-  getElement() {
-    if (!this._element) {
-      this._element = createElement(this.getTemplate());
-    }
-
-    return this._element;
-  }
-
-  removeElement() {
-    this._element = null;
   }
 }
