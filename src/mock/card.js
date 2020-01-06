@@ -9,6 +9,7 @@ import {
   getRandomYear
 } from "../utils/common";
 
+export const emotions = [`smile`, `sleeping`, `puke`, `angry`];
 const actors = [`Erich von Stroheim`, `Mary Beth Hughes`, `Dan Duryea`];
 const director = `Anthony Mann`;
 const writers = [`Anne Wigton`, `Heinz Herald`, `Richard Weil`];
@@ -30,6 +31,7 @@ const generateCard = () => {
     genres,
     filmName: getRandomArrayItem(filmNames),
     rating: getRandomRate(),
+    userRating: parseInt(getRandomRate(), 10),
     year: getRandomYear(),
     date: getFullDate(),
     duration: getRandomDuration(),
@@ -39,7 +41,8 @@ const generateCard = () => {
     commentsVal: getCommentsVal(),
     watchlist: Math.random() > 0.5,
     history: Math.random() > 0.5,
-    favorites: Math.random() > 0.5
+    favorites: Math.random() > 0.5,
+    // emotion: getRandomArrayItem(emotions)
   };
 };
 
