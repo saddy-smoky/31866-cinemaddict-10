@@ -1,21 +1,23 @@
-import {descriptionSource, monthNames} from "../const";
+import {descriptionSource} from "../const";
 
 export const getRandomInt = (min, max) => min + Math.floor(max * Math.random());
 
-export const getRandomYear = () => {
+export const getRandomDuration = () => {
   const targetDate = new Date();
-  const diffValue = getRandomInt(20, 50);
 
-  return targetDate.getFullYear() - diffValue;
+  targetDate.setHours(getRandomInt(0, 3));
+  targetDate.setMinutes(getRandomInt(0, 59));
+  return targetDate;
 };
 
-
 export const getFullDate = () => {
-  const day = getRandomInt(0, 29);
-  const month = getRandomArrayItem(monthNames);
-  const year = getRandomYear();
+  const targetDate = new Date();
+  const year = targetDate.getFullYear() - parseInt(Math.random() * 100, 10);
 
-  return `${day} ${month} ${year}`;
+  targetDate.setFullYear(year);
+  targetDate.setMonth(getRandomInt(0, 11));
+  targetDate.setDate(getRandomInt(0, 7));
+  return targetDate;
 };
 
 export const getRandomArrayItem = (array) => {
@@ -26,7 +28,7 @@ export const getRandomArrayItem = (array) => {
 
 export const getRandomRate = () => Math.random() * 1000 / 100;
 
-export const getRandomDuration = () => `${getRandomInt(0, 2)}h ${getRandomInt(0, 59)}m`;
+// export const getRandomDuration = () => `${getRandomInt(0, 2)}:${getRandomInt(0, 59)}`;
 
 export const getCommentsVal = () => {
   const val = getRandomInt(0, 100);

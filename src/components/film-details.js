@@ -1,6 +1,7 @@
 import AbstractSmartComponent from "./abstract-smart-component";
 import {remove} from "../utils/render";
 import {emotions} from "../mock/card";
+import {formatDate, formatTime} from "../const";
 
 const createUserRatingSection = (name, poster, value) => {
   let renderRating = ``;
@@ -126,11 +127,11 @@ const createPopup = (filmDetails, options = {}) => {
             </tr>
             <tr class="film-details__row">
               <td class="film-details__term">Release Date</td>
-              <td class="film-details__cell">${date}</td>
+              <td class="film-details__cell">${formatDate(date)}</td>
             </tr>
             <tr class="film-details__row">
               <td class="film-details__term">Runtime</td>
-              <td class="film-details__cell">${duration}</td>
+              <td class="film-details__cell">${formatTime(duration)}</td>
             </tr>
             <tr class="film-details__row">
               <td class="film-details__term">Country</td>
