@@ -1,13 +1,15 @@
 import AbstractComponent from "./abstract-component";
+import {formatTime} from "../const";
 
 const createFilmCard = (card) => {
   const {filmName, rating, year, duration, type, posterPath, description, commentsVal} = card;
+
   return `<article class="film-card">
           <h3 class="film-card__title">${filmName}</h3>
           <p class="film-card__rating">${rating.toFixed(2)}</p>
           <p class="film-card__info">
             <span class="film-card__year">${year}</span>
-            <span class="film-card__duration">${duration}</span>
+            <span class="film-card__duration">${formatTime(duration)}</span>
             <span class="film-card__genre">${type}</span>
           </p>
           <img src="${posterPath}" alt="" class="film-card__poster">

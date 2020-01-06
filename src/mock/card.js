@@ -5,8 +5,7 @@ import {
   getRandomArrayItem,
   getRandomDuration,
   getRandomRate,
-  getFullDate,
-  getRandomYear
+  getFullDate
 } from "../utils/common";
 
 export const emotions = [`smile`, `sleeping`, `puke`, `angry`];
@@ -18,6 +17,8 @@ const minAge = `18+`;
 
 const generateCard = () => {
   const genres = [];
+  const date = getFullDate();
+  const year = date.getFullYear();
 
   for (let i = 0; i < 3; i++) {
     genres.push(getRandomArrayItem(filmTypes));
@@ -32,8 +33,8 @@ const generateCard = () => {
     filmName: getRandomArrayItem(filmNames),
     rating: getRandomRate(),
     userRating: parseInt(getRandomRate(), 10),
-    year: getRandomYear(),
-    date: getFullDate(),
+    year,
+    date,
     duration: getRandomDuration(),
     type: getRandomArrayItem(filmTypes),
     posterPath: postersPath + getRandomArrayItem(posterNames),

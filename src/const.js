@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 export const filmNames = [`ipsum dolor sit`, `consectetur`, `adipiscing elit`, `Cras aliquet`, `varius magna`, `fermentum`, `Aliquam id orci`, `Aliquam id`, `condimentum`, `Phasellus eros mauris`, `Nunc fermentum`, `luctus nunc`, `Sed sed nisi`, `sed augue`, `Aliquam`];
 
 export const postersPath = `./images/posters/`;
@@ -22,3 +24,11 @@ export const monthNames = [
   `November`,
   `December`,
 ];
+
+export const formatTime = (date) => {
+  return moment(date).format(`H[h] mm[m]`);
+};
+
+export const formatDate = (date) => {
+  return moment(date).format(`DD MMMM YYYY`);
+};
